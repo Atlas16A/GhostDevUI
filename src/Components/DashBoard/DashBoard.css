@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .sidebar-icon {
+    @apply relative flex items-center justify-center 
+    h-12 w-12 mt-2 mb-2 mx-auto bg-tertiary hover:bg-secondary text-secondary hover:text-tertiary
+    hover:rounded-xl rounded-3xl transition-all duration-300 ease-linear
+      cursor-pointer shadow-lg;
+  }
+}
+
+.sidebar-hr {
+  @apply bg-primary 
+  border rounded-full
+  mx-2;
+}
+
+:root {
+  --golem-color-primary: rgb(49, 53, 56);
+  --golem-color-secondary: #181ea9;
+  --golem-color-tertiary: #a2a3b9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: InterBold;
+  src: url(../../Inter/static/Inter-Bold.ttf);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 3.5vw 91.5vw 5vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "TopBar TopBar TopBar"
+    "SideBar Content ."
+    ". . .";
+}
+
+.Content {
+  grid-area: Content;
+}
+
+.SideBar {
+  grid-area: SideBar;
+}
+
+.TopBar {
+  grid-area: TopBar;
+}

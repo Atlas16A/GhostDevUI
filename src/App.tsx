@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { MoralisProvider, useMoralis, useMoralisWeb3Api } from "react-moralis";
+import DashBoard from "./Components/DashBoard/DashBoard";
+import LoginScreen from "./Components/LoginScreen/LoginScreen";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { authenticate, isAuthenticated, user } = useMoralis();
+
+  const web3Api = useMoralisWeb3Api();
+
+  if (!isAuthenticated) {
+    return <LoginScreen />;
+  }
+
+  if (user === null) {
+    return <div>Loading...</div>;
+  } else {
+    return <DashBoard />;
+  }
 }
 
 export default App;

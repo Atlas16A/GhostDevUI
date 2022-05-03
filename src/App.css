@@ -1,5 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .sidebar-icon {
+    @apply relative flex items-center justify-center 
+    h-12 w-12 mt-2 mb-2 mx-auto bg-tertiary hover:bg-secondary text-secondary hover:text-primary
+    hover:rounded-xl rounded-3xl transition-all duration-300 ease-linear
+      cursor-pointer shadow-lg;
+  }
+}
+
+.sidebar-hr {
+  @apply bg-primary 
+  border rounded-full
+  mx-2;
+}
+
+:root {
+  --golem-color-primary: rgb(49, 53, 56);
+  --golem-color-secondary: #181ea9;
+  --golem-color-tertiary: #a2a3b9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: InterBold;
+  src: url(./Inter/static/Inter-Bold.ttf);
+}
+
 .App {
   text-align: center;
+  min-height: 100vh;
+  /* background-color: var(--golem-color-primary); */
+  background-image: url(./Components/Resources/hexgeotest3.png);
+  font-size: 2em;
+  color: var(--golem-color-primary);
+  font-family: InterBold;
 }
 
 .App-logo {
@@ -7,32 +49,72 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 2em;
+  color: var(--golem-color-tertiary);
+  font-family: InterBold;
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--golem-color-secondary);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background-color: transparent;
+}
+
+.Enter-App-Button {
+  color: var(--golem-color-tertiary);
+  font-size: 0.6em;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border: var(--golem-color-secondary) solid 0.125em;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  text-shadow: rgba(255, 255, 255, 0.212) 0 0 0.125em,
+    var(--golem-color-secondary) 0 0 0.25em;
+
+  box-shadow: inset 0 0 1em 0 var(--golem-color-secondary),
+    0 0 1em 0 var(--golem-color-secondary);
+
+  position: relative;
+}
+
+.Enter-App-Button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 1em 0.5em var(--golem-color-secondary);
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.Enter-App-Button:hover {
+  border: var(--golem-color-secondary) solid 0.125em;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  text-shadow: rgba(255, 255, 255, 0.35) 0 0 0.125em;
+  box-shadow: inset 0 0 1em 0 var(--golem-color-secondary),
+    0 0 1em 0 var(--golem-color-secondary);
+  position: relative;
+}
+
+.Enter-App-Button:hover::after {
+  opacity: 1;
+}
+
+.LogOut_Message {
+  background-color: var(--golem-color-secondary);
+  color: white;
 }
